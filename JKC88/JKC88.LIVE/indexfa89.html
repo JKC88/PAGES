@@ -1,0 +1,224 @@
+bg<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from JKC88.LIVE/?code=6817&utm_medium=paid&utm_source=fb&utm_id=120217298739430771&utm_content=120217298739550771&utm_term=120217298739480771&utm_campaign=120217298739430771&fbclid=IwY2xjawFDynVleHRuA2FlbQEwAAEd2O-RLIjJdDMkKDJTT83g0pv58Lb9HtfzFttUEDuH7FR7SSfzNqNolHDn_aem_SL2kO3AXzGNlpNEH7RPajw by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Sep 2024 07:52:40 GMT -->
+<head>
+    <title>JKC88</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <style>
+      body {
+        background: #000; /* Black background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+      .wrapper {
+        background: #161616; /* Dark grey background for the content */
+        width: 375px; /* Fixed width for the desktop view */
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #header {
+        width: 100%;
+        background: #161616;
+        z-index: 11;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+      #logo {
+        max-width: 40%;
+      }
+      .btnLogin,
+      .btnSignup {
+        min-width: 90px;
+        height: 28px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-family: "Nunito Sans", sans-serif;
+        font-weight: bold;
+        font-size: 1rem;
+        text-transform: uppercase;
+      }
+      .btnLogin {
+        color: #e9e9e9;
+        border: 1px solid hsl(0, 0%, 91%);
+        margin-left: 16px;
+      }
+      .btnSignup {
+        min-width: 96px;
+        background: #ff4e00;
+        color: #000;
+        margin-left: 10px;
+        position: relative;
+      }
+
+      .step {
+        position: absolute;
+        top: 30px;
+        left: 35%;
+        z-index: 11;
+        transition: all 0.5s ease-out;
+        display: none;
+        width: 50%;
+      }
+      .navMob {
+        margin-left: 6px;
+        height: 20px;
+      }
+      #main {
+        position: relative;
+        overflow: hidden;
+      }
+      #main .overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 2;
+        pointer-events: none;
+      }
+      .animate-pulse {
+        position: relative;
+        animation: pulse 2s infinite;
+      }
+
+      .btnSignup::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 4px;
+        box-shadow: 0 0 0 0 rgba(255, 78, 0, 0.7);
+        z-index: -1;
+        animation: pulse 2s infinite;
+
+        /* transition: box-shadow 0.3s ease-in-out; */
+      }
+      .btnSignup span {
+        background-color: #ff4e00;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 3px 2px rgba(255, 78, 0, 0.1);
+        }
+        50% {
+          box-shadow: 0 0 3px 2px rgba(255, 78, 0, 0.7);
+        }
+      }
+
+      @keyframes shakeX {
+        0%,
+        100% {
+          transform: translateX(0%);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: translateX(-5px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: translateX(5px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header id="header">
+        <a href="#" id="logo"><img src="img/logo.png" alt="logo" /></a>
+        <a class="btnLogin" href="#">Register</a>
+        <a class="btnSignup" href="#"><span>Game Spin</span></a>
+        <a href="#"><img src="img/menu.png" class="navMob h-full" /></a>
+        <a href="#"> <img src="img/step.png" class="step" /></a>
+      </header>
+      <main id="main">
+        <div class="overlay"></div>
+        <img src="img/mobile.gif" alt="main image" class="md:h-full" />
+      </main>
+    </div>
+    <script src="../code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        var affiliate = getUrlParameter("aff");
+        if (affiliate === "" || affiliate === "false" || affiliate === false) {
+          var affiliate = getUrlParameter("code");
+          if (
+            affiliate === "" ||
+            affiliate === "false" ||
+            affiliate === false
+          ) {
+            affiliate = "";
+          }
+        }
+        $("a").attr(
+          "href",
+          "https://jkc88.asia/RFKIMBERLY" + affiliate
+        );
+        $("a").attr("target", "_top");
+
+        // Show the step image on page load with an animation
+        $(".step").fadeIn(800, function () {
+          // After showing, start the shake animation after a delay
+          setTimeout(function () {
+            performShake();
+          }, 3000); // 3 seconds delay before shake starts
+        });
+
+        function performShake() {
+          // Add the shakeX animation class
+          $(".step").css("animation", "shakeX 1s ease-in-out");
+
+          // After the shake animation completes, remove the class and restart the sequence
+          setTimeout(function () {
+            $(".step").css("animation", ""); // Remove the animation
+            setTimeout(function () {
+              performShake(); // Restart the shake after a delay
+            }, 5000); // 5 seconds delay before starting the next shake
+          }, 500); // Duration of the shake animation (0.5s)
+        }
+      });
+
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+          sURLVariables = sPageURL.split("&"),
+          sParameterName,
+          i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split("=");
+
+          if (sParameterName[0] === sParam) {
+            return typeof sParameterName[1] === undefined
+              ? true
+              : decodeURIComponent(sParameterName[1]);
+          }
+        }
+        return false;
+      };
+    </script>
+  </body>
+
+<!-- Mirrored from JKC88.LIVE/?code=6817&utm_medium=paid&utm_source=fb&utm_id=120217298739430771&utm_content=120217298739550771&utm_term=120217298739480771&utm_campaign=120217298739430771&fbclid=IwY2xjawFDynVleHRuA2FlbQEwAAEd2O-RLIjJdDMkKDJTT83g0pv58Lb9HtfzFttUEDuH7FR7SSfzNqNolHDn_aem_SL2kO3AXzGNlpNEH7RPajw by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Sep 2024 07:52:41 GMT -->
+</html>
